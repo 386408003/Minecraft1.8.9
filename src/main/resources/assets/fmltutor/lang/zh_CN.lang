@@ -1,0 +1,39 @@
+itemGroup.fmltutor=FML教程
+
+tile.grassBlock.name=草块
+tile.fluidMercury.name=水银
+
+item.goldenEgg.name=金蛋
+item.redstoneAxe.name=红石斧
+item.redstoneHoe.name=红石锄
+item.redstonePickaxe.name=红石镐
+item.redstoneShovel.name=红石铲
+item.redstoneSword.name=红石剑
+item.redstoneApple.name=红石苹果
+item.redstoneHelmet.name=红石头盔
+item.redstoneChestplate.name=红石胸甲
+item.redstoneLeggings.name=红石护腿
+item.redstoneBoots.name=红石靴子
+
+death.attack.byPig=%1$s 被猪搞死了！
+
+enchantment.fireBurn=火焰灼烧
+
+potion.fallProtection=摔落保护
+
+key.fmltutor.showTime=显示时间
+key.categories.fmltutor=FML教程
+
+chat.fmltutor.time=现在时间为：%s。
+
+achievement.fmltutor.worseThanPig=人不如猪
+achievement.fmltutor.worseThanPig.desc=因为提供给猪错误的饲料而死
+achievement.fmltutor.buildGrassBlock=草块
+achievement.fmltutor.buildGrassBlock.desc=制作一个草块
+achievement.fmltutor.explosionFromGrassBlock=草块爆炸
+achievement.fmltutor.explosionFromGrassBlock.desc=通过点击草块使草块爆炸
+
+commands.position.usage=/position [玩家]
+commands.position.success=玩家 %1$s 处于名为 %3$s 的世界，其坐标为 %2$s
+
+fluid.mercury=水银
