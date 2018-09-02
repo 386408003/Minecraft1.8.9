@@ -1,0 +1,67 @@
+一、下载	mdk： forge官网 http://files.minecraftforge.net/
+		从Forge官网下载ForgeMdk，并尽可能采用稳定版本（作者采用的是11.15.1.2318版本），本教程的所有开发操作都基于此。
+
+二、在forge所在目录打开命令提示符输入gradlew.bat -i setupDecompWorkspace
+		-i 显示详细信息
+
+
+三、翻墙情况
+		gradlew.bat -Dhttp.proxyHost=[你的代理的地址] -Dhttp.proxyPort=[你的代理的HTTP代理端口] -Dhttps.proxyHost=[你的代理的地址] -Dhttps.proxyPort=[你的代理的HTTPS代理端口] setupDecompWorkspace
+		如果你的代理需要账户和密码的话,你可能还需要加入http.proxyUser,http.proxyPassword,https.proxyUser和https.proxyPassword来设置账户名和密码...对于对HTTPS支持不好的代理,如GoAgent来说...可以采用代理/非代理交替执行的方式来下载,遇到非代理下不动的地方就用代理下,遇到代理下不动的地方就用非代理来下...
+
+
+四、successful之后
+		首先我们需要安装Gradle插件,打开Help - Eclipse Marketplace,搜索Gradle,然后选择Gradle Integration for Eclipse插件,这个插件为Eclipse提供了一些兼容Gradle项目的设定.点击它的Install.
+
+
+五、手动配置
+		首先打开File - Import,然后选择Gradle - Gradle Project
+		然后选择你的Forge目录 然后点击Build Model
+		之后你还需要自己配置启动方案.右键你的项目,选择Properties.
+		然后选择Run/Debug Setting,点击New添加一个启动方案.
+		客户端
+		首先我们要创建一个客户端启动方案.名字就叫做Client吧.将主类(Main Class)选为GradleStart.
+		然后打开Arguments页,将Working directory选为Other,内容填上:
+		${workspace_loc}
+		如果你需要设置用户名和密码(可选,只有用户名也能显示皮肤)的话在Program Arguments中加入:
+		--username [用户名] --password [密码]    e.g. --username zf --password zf
+		服务器
+		MainClass为:GradleStartServer
+
+		更改文件编码和JDK版本
+		Text file encoding设为UTF-8
+
+
+六、自动配置eclipse
+		gradlew.bat eclipse
+		然后将工作目录切换到你的Forge目录下的eclipse目录中.
+
+
+七、Mod发布
+		1.打开Forge开发包根目录
+		2.编辑build.gradle文件。需要修改的部分包括version、group、archivesBaseName这三项。
+		其中，version项的值推荐设置成"MC版本号-本mod版本号"的形式；group项的值要设置成MOD主文件所在的包、archivesBaseName项设置成Mod的id号。
+		e.g.
+
+			version = "minecraft1.7.10-0.0.1"
+			group= "com.zf.friendmod" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+			archivesBaseName = "friendmod"
+
+		3.shift+右键点击Forge开发包根目录，并在此处打开控制台。控制台中输入   gradlew build
+		4.等待打包发布完成，会显示如下图的build success之类的字样
+		5.找到Forge根目录下的build/lib/目录，这里就是打包后的mod文件。
+		6.使用压缩文件打开刚刚打包好的mod文件，这里一定要注意，如果在工程中同时制作多个文件，gradlew也会将其他的mod一起打包进来。
+		这会导致游戏主程序无法执行此mod，直接崩溃退出。所以，为了解决这一问题，我们手动删除不需要的文件。
+		包括asset中的多余内容、以及其他一些mod主文件。
+		7.清理后的压缩包内容。然后编辑mcmod.info文件。
+		需要编辑的主要包括"modid" "name" "description"等内容。
+		e.g.
+
+  		"modid": "happylifemod",
+  		"name": "Happy Life",
+  		"description": "Happy Mod adds many funny things.",
+
+		这样，一个mod就算打包完成了。可以发布了。
+
+
+https://fmltutor.ustc-zzzz.net/
